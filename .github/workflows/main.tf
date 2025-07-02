@@ -35,3 +35,4 @@ resource "aws_dynamodb_table" "lock_files" {
     Name = "lock-files"
   }
 }
+
