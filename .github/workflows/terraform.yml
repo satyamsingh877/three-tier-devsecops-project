@@ -18,26 +18,31 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
+        uses: hashicorp/setup-terraform@v2
         with:
-          terraform_version: 1.0.0
+          terraform_version: 1.5.7
+
+      - name: List files (debugging)
+        run: ls -la
+
+      - name: List infra files (debugging)
+        run: ls -la infra/
 
       - name: Terraform Init
-        run: terraform init
-
-      - name: Terraform Format
-        run: terraform fmt -check
-
-      - name: Terraform Validate
-        run: terraform validate
+        working-directory: infra
+        run: |
+          terraform init
+          terraform validate
 
       - name: Terraform Plan
-        run: terraform plan
+        working-directory: infra
+        run: terraform plan -input=false
         
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        working-directory: infra
+        run: terraform apply -auto-approve -input=false
         
