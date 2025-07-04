@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Checkout from Git') {
             steps {
-                git branch: 'main', credentialsId: 'GITHUB', url: 'https://github.com/codewithmuh/three-tier-devsecops-project.git'
+                git branch: 'main', credentialsId: 'GITHUB', url: 'https://github.com/satyamsingh877/three-tier-devsecops-project.git'
             }
         }
         stage('Sonarqube Analysis') {
@@ -28,10 +28,10 @@ pipeline {
                     withSonarQubeEnv('sonar-server') {
                         sh ''' 
                             $SCANNER_HOME/bin/sonar-scanner \
-                            -Dsonar.projectKey=backend \
-                            -Dsonar.sources=. \
-                            -Dsonar.host.url=http://44.244.210.204:9000 \
-                            -Dsonar.login=sqp_5940b2eeea33d0e4f873243a7a1f988ab74dd112
+                           -Dsonar.projectKey=backend \
+                           -Dsonar.sources=. \
+                           -Dsonar.host.url=http://35.90.82.138:9000 \
+                           -Dsonar.login=sqp_9352c84e8c7a805052585f2f162681d6b84cc1d2
                         '''
                     }
                 }
@@ -86,7 +86,7 @@ pipeline {
         }
         stage('Checkout Code') {
             steps {
-                git branch: 'main', credentialsId: 'GITHUB', url: 'https://github.com/codewithmuh/three-tier-devsecops-project.git'
+                git branch: 'main', credentialsId: 'GITHUB', url: 'https://github.com/satyamsingh877/three-tier-devsecops-project.git'
             }
         }
         stage('Update Deployment file') {
