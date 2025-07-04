@@ -1,6 +1,3 @@
-provider "aws" {
-  region = "us-west-2" # Change to your preferred region
-}
 
 # Create ECR repository for frontend
 resource "aws_ecr_repository" "frontend" {
